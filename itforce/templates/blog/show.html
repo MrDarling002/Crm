@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+    просмотр заказа
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center"><a href="{% url 'index' %}" class="btn btn-outline-secondary"><i class="fa fa-arrow-left"></i></a> Подробности: {{order.customer.name}}</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>Имя:</th>
+                        <td>{{order.customer.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Номер телефона:</th>
+                        <td>{{order.customer.phone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Сервис:</th>
+                        <td>{{order.service.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Описание:</th>
+                        <td>{{order.service.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Бренд продукта:</th>
+                        <td>{{order.product_brand.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Категория продукта:</th>
+                        <td>{{order.product_category.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Серийный номер:</th>
+                        <td>{{order.serial_number}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Дополнительная информация:</th>
+                        <td>{{order.additional_info}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Цена:</th>
+                        <td>{{order.price}}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

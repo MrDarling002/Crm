@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">
+    <a href="" class="btn btn-outline-secondary">Назад</a>Удаление {{product_category.id}}</h1>
+    <div class="card-body from-delete">
+        <div class="d-flex align-items-center">
+            <div class="fn-box radius-15">
+                <i class="fa fa-trash">
+                </i>
+            </div>
+            <div class="ms-auto font-24">
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <h5 class="mt-3 mb-0">Вы точно хотите удалить <span style="border: 1px solid red;">{{product_category.id}}</span></h5>
+                <p class="mb-1 mt-4"><span><input type="submit" class="btn btn-danger"value="удалить"></span></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

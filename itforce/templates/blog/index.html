@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-12" style="position: relative; top: 100px;">
+    <div class="card">
+      <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title">Simple Table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Номер телефона</th>
+                    <th>Сервис</th>
+                    <th>Описание</th>
+                    <th>Бренд продукта</th>
+                    <th>Категория продукта</th>
+                    <th>Серийный номер</th>
+                    <th>Дополнительная информация</th>
+                    <th>Цена</th>
+                    <th>статус</th>
+                    <th>Выберите действие</th>
+                </tr>
+            </thead>
+            <tbody>       
+                {% for order in order %}
+                <tr>
+                    <td>{{order.customer.name}}</td>
+                    <td>{{order.customer.phone}}</td>
+                    <td>{{order.service.title}}</td>
+                    <td style="word-break: break-all; ">{{order.service.description}}</td>
+                    <td>{{order.product_brand.title}}</td>
+                    <td>{{order.product_category.title}}</td>
+                    <td>{{order.serial_number}}</td>
+                    <td style="word-break: break-all; ">{{order.additional_info}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.status.title}}</td>
+                    <td class="text-right">
+                      <a href="{% url 'delete_order' order.id %}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
+                      <a href="{% url 'show'  order.id %}" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
+                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-7 " style="margin: 100px auto;">
+  <form action="{% url 'create_order_status' %}" method="POST" class="form-control col-md-12  justify-content-center " >
+      {% csrf_token %}
+      <div class="col-md-6 form-customer d-flex">
+          <input required type="text" name="time"  placeholder="Имя покупателя" class="form-control my3 col-md-3">
+      </div>
+      <div style="margin: 10px 20px;">
+      <button type="submit" class="btn btn-secondary">Сохранить</button>
+      </div>
+  </form>
+</div>
+<div class="col-md-12" style="position: relative; top: 100px;">
+    <div class="card">
+      <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title">Simple Table</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>Статус</th>
+                   
+            </thead>
+            <tbody>       
+                {% for order_status in order_status %}
+                <tr>
+                    <td>{{order_status.time}}</td>
+                    <td class="text-right">
+                      <a href="{% url 'delete_order_status' order_status.id %}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
+                      <a href="{% url 'show_order_status' order_status.id %}" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
+                      <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
